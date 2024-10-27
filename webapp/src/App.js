@@ -13,7 +13,7 @@ const App = () => {
         <Route path="/waiter" element={<Waiter />} />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
