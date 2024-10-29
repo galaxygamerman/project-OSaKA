@@ -3,7 +3,7 @@ import './App.css'
 import BasePage from './UsePages/BasePage'
 import Chef from './UsePages/Chef'
 import Waiter from './UsePages/Waiter'
-import { Routes, Routew } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 const App = () => {
   return (
     <div>
