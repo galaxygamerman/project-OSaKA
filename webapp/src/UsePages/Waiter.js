@@ -76,7 +76,7 @@ present price displayed with respect to the previous quantity*/
     </Card>
   ))}
     <Button>
-      Finalise      
+      Finalise
     </Button>
   </div>
   );
