@@ -75,6 +75,9 @@ present price displayed with respect to the previous quantity*/
       </Card.Body>
     </Card>
   ))}
+    <Button>
+      Finalise      
+    </Button>
   </div>
   );
 };
