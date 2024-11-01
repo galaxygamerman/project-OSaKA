@@ -1,0 +1,92 @@
+
+.Waiter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background: transparent; 
+}
+
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+
+  .Card {
+    width: calc(25% - 20px); 
+    margin: 10px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .Card:hover {
+    transform: scale(1.02);
+  }
+  
+  .Card-Body {
+    padding: 16px;
+    background-color: #ffffff;
+  }
+  
+  .Card-Title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #495057;
+  }
+  
+  .m-cost {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  
+ 
+  .Card-Text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+  }
+  
+  button {
+    min-width: 30px;
+    min-height: 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  button:hover {
+    background-color: #e2e6ea;
+  }
+   span {
+    font-size: 18px;
+    padding: 0 10px;
+    color: #212529;
+  }
+  
+  @media (max-width: 768px) {
+    .Card {
+      width: calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Card {
+      width: 100%; 
+    }
+  }
+  
