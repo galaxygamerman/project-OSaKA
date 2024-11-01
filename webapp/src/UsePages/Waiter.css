@@ -24,7 +24,14 @@
   transition: transform 0.2s; /* Smooth transition for hover effect */
 }
 
-
+.Inc{
+  border-radius: 5px;
+  background: rgb(250, 151, 1);
+}
+.Dec{
+  border-radius: 5px;
+  background: rgb(197, 0, 174);
+}
 
 /* Main container styling */
 .Waiter-container {

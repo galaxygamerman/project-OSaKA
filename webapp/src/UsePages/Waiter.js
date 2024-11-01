@@ -111,11 +111,11 @@ present price displayed with respect to the previous quantity*/
               <Card.Title className="Card-Title">{item.name}</Card.Title>
               <Card.Text className="Card-Text">
                 <div className="m-cost">₹{item.MainPrice}</div>
-                <Button onClick={() => decrement(index)} variant="primary" size="sm">
+                <Button className="Dec" onClick={() => decrement(index)} variant="primary" size="sm">
                   -
                 </Button>
                 <span>{Qty[index]}</span>
-                <Button onClick={() => increment(index)} variant="secondary" size="sm">
+                <Button className="Inc" onClick={() => increment(index)} variant="secondary" size="sm">
                   +
                 </Button>
                 <span>₹{price[index]}</span>
