@@ -21,14 +21,13 @@ const Waiter = () => {
   const [price, setPrice] = useState(Array(items.length).fill(0));
   const [finalized, setFinalized] = useState([]);
   const [token, setToken] = useState(1);
-
 /*Initially tried:
     setQty(prevQty => prevQty+1)
     setPrice(prevPrice =>(Qty*MainPrice))
 Did not work as it would alter quantity but the respective price would be diplayed after the queantity event and 
 present price displayed with respect to the previous quantity*/
 
-  function decrement(index)  {
+  function decrement(index) {
     setQty((prevQty) => {
       const newQty = [...prevQty];
       if (newQty[index] > 0) {
@@ -41,8 +40,8 @@ present price displayed with respect to the previous quantity*/
       }
       return newQty;
     });
-  };
-   
+  }
+
   function increment(index) {
     setQty((prevQty) => {
       const newQty = [...prevQty];
@@ -54,74 +53,82 @@ present price displayed with respect to the previous quantity*/
       });
       return newQty;
     });
-  };
+  }
 
-  function finalise() {
-    const name=prompt("Enter Customer Name: ");
+  function handleFinalize() {
+    const name = prompt("Enter Customer Name:");
+    if (!name) return;
 
     const totalPrice = price.reduce((acc, curr) => acc + curr, 0);
     /*The above works, reduce is built in and used to iterate through every element in an array, 
       acc: accummulate, cur: current, 0 initialises acc to 0.*/
-    if(totalPrice>0){
+     if (totalPrice > 0) {
       /*Used flower brackets within square brackets because I want to group token, name and totalPrice */
-      setFinalized((prevFinalised) =>[...prevFinalised,
-      { token: token,
-        name,
-        totalPrice: totalPrice 
-      }]);
-      setToken((prevToken)=>prevToken+1);
-      
+
+      setFinalized((prevOrders) => [
+        ...prevOrders,
+        { token: token, name, totalPrice: totalPrice }
+      ]);
+      setToken((prevToken) => prevToken + 1);
+
+      // Reset Qty and price arrays to initial state
       setQty(Array(items.length).fill(0));
       setPrice(Array(items.length).fill(0));
     }
   }
 
-
   return (
-  <div className="Waiter-container">
-  {items.map((item, index) => (
-    <Card className="Card" key={item.id}>
-      <Card.Body className="Card-Body">
-        <Card.Title className="Card-Title">{item.name}</Card.Title>
-        <Card.Text className="Card-Text">
-          <div className="m-cost">₹{item.MainPrice}</div>
-          <Button onClick={() => decrement(index)} variant="primary" size="sm">
-            -
-          </Button>
-          <span>{Qty[index]}</span>
-          <Button onClick={() => increment(index)} variant="secondary" size="sm">
-            +
-          </Button>
-          <span>₹{price[index]}</span>
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  ))}
-    <Button className="finalise" onClick={finalise} >
-      Finalise
-    </Button>
-    <div className='Finalised'>
-      <h3>Booked</h3>
-      <table className='final-table'>
-        <thead>
-          <tr>
-            <th>Token Number</th>
-            <th>Customer Name</th>
-            <th>Total Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {finalized.map((order)=>(
-          <tr>
-            <td>{order.token}</td>
-            <td>{order.name}</td>
-            <td>{order.totalPrice}</td>
-          </tr>
+    <div className='Header'>
+      <h1>Waiter Page</h1>
+    <div className="Waiter-container">
+      <div className="Finalized">
+        <h3>Booked Orders</h3>
+        <table className="final-table">
+          <thead>
+            <tr>
+              <th>Token Number</th>
+              <th>Customer Name</th>
+              <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {finalized.map((order) => (
+              <tr key={order.token}>
+                <td>{order.token}</td>
+                <td>{order.name}</td>
+                <td>₹{order.totalPrice}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="Cards-container">
+        {items.map((item, index) => (
+          <Card className="Card" key={item.id}>
+            <Card.Body className="Card-Body">
+              <Card.Title className="Card-Title">{item.name}</Card.Title>
+              <Card.Text className="Card-Text">
+                <div className="m-cost">₹{item.MainPrice}</div>
+                <Button onClick={() => decrement(index)} variant="primary" size="sm">
+                  -
+                </Button>
+                <span>{Qty[index]}</span>
+                <Button onClick={() => increment(index)} variant="secondary" size="sm">
+                  +
+                </Button>
+                <span>₹{price[index]}</span>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         ))}
-        </tbody>
-    </table>
+      </div>
+
+      <Button className="finalize" onClick={handleFinalize}>
+        Finalize
+      </Button>
     </div>
-  </div>
+    </div>
   );
 };
 

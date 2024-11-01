@@ -1,35 +1,36 @@
-.wrapper{
+
+.wrapper {
     background: rgb(255, 134, 134);
     height: 350px;
     width: 700px;
     border: 5px solid rgba(189, 127, 33, 0.808);
     color: black;
     border-radius: 10px;
-    padding: 35px 35px ;
+    padding: 35px;
     box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.2);
+    font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
 }
 
-.wrapper h1{
-    
+.wrapper h1 {
     font-size: 45px;
     text-align: center;
+    font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
 }
 
-.wrapper .Button-box{
+.wrapper .Button-box {
     width: 100%;
     position: relative;
     height: 50px;
-    margin: 50px 0 ;
+    margin: 50px 0;
 }
 
-.Button-box .icon{
+.Button-box .icon {
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 16px;
 }
-
 
 .chef-button {
     cursor: pointer;
@@ -46,6 +47,7 @@
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
+    font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
 }
 
 .chef-button:hover {
@@ -68,6 +70,7 @@
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
+    font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
 }
 
 .waiter-button:hover {
