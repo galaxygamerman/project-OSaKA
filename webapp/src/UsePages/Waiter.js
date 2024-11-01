@@ -58,8 +58,20 @@ present price displayed with respect to the previous quantity*/
 
   function finalise() {
     const name=prompt("Enter Customer Name: ");
-    setQty(Array(items.length).fill(0));
-    setPrice(Array(items.length).fill(0));
+
+    const totalPrice=1234;
+    if(totalPrice>0){
+      /*Used flower brackets within square brackets because I want to group token, name and totalPrice */
+      setQty((prevQty) =>[...prevQty,
+      { token: token,
+        customerName,
+        totalPrice: totalOrderPrice 
+      }]);
+      setToken((prevToken)=>prevToken+1);
+      
+      setQty(Array(items.length).fill(0));
+      setPrice(Array(items.length).fill(0));
+    }
   }
 
 
