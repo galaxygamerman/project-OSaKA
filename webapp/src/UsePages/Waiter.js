@@ -93,7 +93,6 @@ present price displayed with respect to the previous quantity*/
             <td>1</td>
             <td>Anom</td>
             <td>Total Price</td>
- 
         </tr>
     </table>
 
