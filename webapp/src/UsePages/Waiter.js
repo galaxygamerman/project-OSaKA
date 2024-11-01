@@ -27,8 +27,6 @@ const Waiter = () => {
 Did not work as it would alter quantity but the respective price would be diplayed after the queantity event and 
 present price displayed with respect to the previous quantity*/
 
-
-
   function decrement(index)  {
     setQty((prevQty) => {
       const newQty = [...prevQty];
@@ -57,6 +55,11 @@ present price displayed with respect to the previous quantity*/
     });
   };
 
+  function finalise() {
+    const name=prompt("Enter Customer Name: ");
+  }
+
+
   return (
   <div className="Waiter-container">
   {items.map((item, index) => (
@@ -77,7 +80,7 @@ present price displayed with respect to the previous quantity*/
       </Card.Body>
     </Card>
   ))}
-    <Button className="finalise" >
+    <Button className="finalise" onClick={finalise} >
       Finalise
     </Button>
     <div className='Finalised'>
