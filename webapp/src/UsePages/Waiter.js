@@ -88,17 +88,20 @@ present price displayed with respect to the previous quantity*/
     <div className='Finalised'>
       <h3>Booked</h3>
       <table className='final-table'>
-        <tr>
+        <thead>
+          <tr>
             <th>Token Number</th>
-            
             <th>Customer Name</th>
             <th>Total Price</th>
-        </tr>
-        <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
             <td>1</td>
             <td>Anom</td>
             <td>Total Price</td>
-        </tr>
+          </tr>
+        </tbody>
     </table>
     </div>
   </div>
