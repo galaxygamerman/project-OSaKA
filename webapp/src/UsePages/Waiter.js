@@ -109,11 +109,13 @@ present price displayed with respect to the previous quantity*/
           </tr>
         </thead>
         <tbody>
+          {finalized.map((order)=>(
           <tr>
-            <td>1</td>
-            <td>Anom</td>
-            <td>Total Price</td>
+            <td>{order.token}</td>
+            <td>{order.token}</td>
+            <td>{order.token}</td>
           </tr>
+        ))}
         </tbody>
     </table>
     </div>
