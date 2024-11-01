@@ -4,7 +4,6 @@ import Card from 'react-bootstrap/Card';
 import './Waiter.css';
 
 const Waiter = () => {
-  // Array of item data
   const items = [
     { id: 1, name: 'Item 1', MainPrice: 120 },
     { id: 2, name: 'Item 2', MainPrice: 150 },
@@ -18,9 +17,10 @@ const Waiter = () => {
     { id: 10, name: 'Item 10', MainPrice: 110 },
   ];
 
-  // States for quantities and prices
   const [Qty, setQty] = useState(Array(items.length).fill(0));
   const [price, setPrice] = useState(Array(items.length).fill(0));
+
+
 /*Initially tried:
     setQty(prevQty => prevQty+1)
     setPrice(prevPrice =>(Qty*MainPrice))
@@ -55,31 +55,27 @@ present price displayed with respect to the previous quantity*/
     });
   };
 
-  // Function to handle decrement
-
-
   return (
-    <div>
-      <h2>Waiter Page</h2>
-      {items.map((item, index) => (
-        <Card style={{ width: '18rem', margin: '10px' }} key={item.id}>
-          <Card.Body>
-            <Card.Title>{item.name}</Card.Title>
-            <Card.Text>
-              <div className="m-cost">₹{item.MainPrice}</div>
-              <Button onClick={()=>decrement(index)} variant="primary" size="sm">
-                -
-              </Button>
-              <span>{Qty[index]}</span>
-              <Button onClick={() => increment(index)} variant="secondary" size="sm">
-                +
-              </Button>
-              <span>₹{price[index]}</span>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      ))}
-    </div>
+  <div className="Waiter-container">
+  {items.map((item, index) => (
+    <Card className="Card" key={item.id}>
+      <Card.Body className="Card-Body">
+        <Card.Title className="Card-Title">{item.name}</Card.Title>
+        <Card.Text className="Card-Text">
+          <div className="m-cost">₹{item.MainPrice}</div>
+          <Button onClick={() => decrement(index)} variant="primary" size="sm">
+            -
+          </Button>
+          <span>{Qty[index]}</span>
+          <Button onClick={() => increment(index)} variant="secondary" size="sm">
+            +
+          </Button>
+          <span>₹{price[index]}</span>
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  ))}
+  </div>
   );
 };
 

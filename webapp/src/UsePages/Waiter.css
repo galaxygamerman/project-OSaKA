@@ -1,43 +1,92 @@
-/* Header styling */
-h2 {
-    color: #495057;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
 
-/* Card styling */
-.card {
-    border: 2px solid #000000;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.m-cost {
-    display: block;  /* Forces TCost onto its own line */
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px; /* Adds space below TCost */
-}
-
-
-/* Align quantity controls and cost */
-.card-text {
+.Waiter-container {
     display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Button styling for quantity controls */
-.btn-primary, .btn-secondary {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa; 
 }
 
-.qty-text {
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+
+  .Card {
+    width: calc(25% - 20px); 
+    margin: 10px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .Card:hover {
+    transform: scale(1.02);
+  }
+  
+  .Card-Body {
+    padding: 16px;
+    background-color: #ffffff;
+  }
+  
+  .Card-Title {
+    font-size: 20px;
     font-weight: bold;
-}
+    color: #495057;
+  }
+  
+  .m-cost {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  
+ 
+  .Card-Text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+  }
+  
+  button {
+    min-width: 30px;
+    min-height: 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  button:hover {
+    background-color: #e2e6ea;
+  }
+   span {
+    font-size: 18px;
+    padding: 0 10px;
+    color: #212529;
+  }
+  
+  @media (max-width: 768px) {
+    .Card {
+      width: calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Card {
+      width: 100%; 
+    }
+  }
+  
