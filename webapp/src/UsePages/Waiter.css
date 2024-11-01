@@ -1,0 +1,43 @@
+/* Header styling */
+h2 {
+    color: #495057;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Card styling */
+.card {
+    border: 2px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.m-cost {
+    display: block;  /* Forces TCost onto its own line */
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px; /* Adds space below TCost */
+}
+
+
+/* Align quantity controls and cost */
+.card-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Button styling for quantity controls */
+.btn-primary, .btn-secondary {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-text {
+    font-weight: bold;
+}
