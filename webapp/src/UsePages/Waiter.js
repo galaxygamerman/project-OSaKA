@@ -100,7 +100,6 @@ present price displayed with respect to the previous quantity*/
             <td>Total Price</td>
         </tr>
     </table>
-
     </div>
   </div>
   );
