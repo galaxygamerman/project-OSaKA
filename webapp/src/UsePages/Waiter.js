@@ -65,7 +65,7 @@ present price displayed with respect to the previous quantity*/
       setQty((prevQty) =>[...prevQty,
       { token: token,
         name,
-        totalPrice: totalOrderPrice 
+        totalPrice: totalPrice 
       }]);
       setToken((prevToken)=>prevToken+1);
       
