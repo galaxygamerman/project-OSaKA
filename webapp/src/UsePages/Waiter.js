@@ -87,20 +87,13 @@ present price displayed with respect to the previous quantity*/
             <th>Token Number</th>
             
             <th>Customer Name</th>
+            <th>Total Price</th>
         </tr>
         <tr>
             <td>1</td>
             <td>Anom</td>
+            <td>Total Price</td>
  
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Megha</td>
-
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Subham</td>
         </tr>
     </table>
 
