@@ -27,6 +27,8 @@ const Waiter = () => {
 Did not work as it would alter quantity but the respective price would be diplayed after the queantity event and 
 present price displayed with respect to the previous quantity*/
 
+
+
   function decrement(index)  {
     setQty((prevQty) => {
       const newQty = [...prevQty];
@@ -75,9 +77,34 @@ present price displayed with respect to the previous quantity*/
       </Card.Body>
     </Card>
   ))}
-    <Button>
+    <Button className="finalise" >
       Finalise
     </Button>
+    <div className='Finalised'>
+      <h3>Booked</h3>
+      <table className='final-table'>
+        <tr>
+            <th>Token Number</th>
+            
+            <th>Customer Name</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Anom</td>
+ 
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Megha</td>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Subham</td>
+        </tr>
+    </table>
+
+    </div>
   </div>
   );
 };
