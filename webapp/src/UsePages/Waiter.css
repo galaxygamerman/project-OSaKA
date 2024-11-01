@@ -10,11 +10,20 @@
   border-bottom: 2px solid #28a745; /* Green bottom border for visual separation */
   padding: 5px; /* Space between the text and the border */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  background-color: rgb(0, 128, 0); /* Light background color for a clean look */
+  background-color: rgb(254, 255, 169); /* Light background color for a clean look */
   border-radius: 5px; /* Slightly rounded corners */
   max-width: 400px; /* Set a maximum width for the header */
   margin: 0 auto; /* Center the header */
 }
+.icon {
+  width: 30px; /* Set the width of the icon */
+  height: 30px; /* Set the height of the icon */
+  margin-left: 10px; /* Add space to the left of the icon */
+  vertical-align: middle; /* Align the icon vertically with the text */
+  /* Optional: Add hover effects */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
 
 
 /* Main container styling */

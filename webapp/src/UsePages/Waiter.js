@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import waitericon from '../Assets/waiter.png';
 import './Waiter.css';
 
 const Waiter = () => {
@@ -79,7 +80,7 @@ present price displayed with respect to the previous quantity*/
 
   return (
     <div className='Header'>
-      <h1>Waiter Page</h1>
+      <h1>Waiter Page<img src={waitericon} alt="Waiter icon" className="icon" /></h1>
     <div className="Waiter-container">
       <div className="Finalized">
         <h3>Booked Orders</h3>
