@@ -58,7 +58,8 @@ present price displayed with respect to the previous quantity*/
 
   function finalise() {
     const name=prompt("Enter Customer Name: ");
-
+    setQty(Array(items.length).fill(0));
+    setPrice(Array(items.length).fill(0));
   }
 
 
