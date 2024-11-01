@@ -19,7 +19,8 @@ const Waiter = () => {
 
   const [Qty, setQty] = useState(Array(items.length).fill(0));
   const [price, setPrice] = useState(Array(items.length).fill(0));
-
+  const [finalized, setFinalized] = useState([]);
+  const [token, setToken] = useState(1);
 
 /*Initially tried:
     setQty(prevQty => prevQty+1)
@@ -57,6 +58,7 @@ present price displayed with respect to the previous quantity*/
 
   function finalise() {
     const name=prompt("Enter Customer Name: ");
+
   }
 
 
