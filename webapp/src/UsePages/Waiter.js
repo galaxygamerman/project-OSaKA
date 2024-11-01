@@ -62,7 +62,7 @@ present price displayed with respect to the previous quantity*/
     const totalPrice=1234;
     if(totalPrice>0){
       /*Used flower brackets within square brackets because I want to group token, name and totalPrice */
-      setQty((prevQty) =>[...prevQty,
+      setFinalized((prevFinalised) =>[...prevFinalised,
       { token: token,
         name,
         totalPrice: totalPrice 
