@@ -59,7 +59,9 @@ present price displayed with respect to the previous quantity*/
   function finalise() {
     const name=prompt("Enter Customer Name: ");
 
-    const totalPrice=1234;
+    const totalPrice = price.reduce((acc, curr) => acc + curr, 0);
+    /*The above works, reduce is built in and used to iterate through every element in an array, 
+      acc: accummulate, cur: current, 0 initialises acc to 0.*/
     if(totalPrice>0){
       /*Used flower brackets within square brackets because I want to group token, name and totalPrice */
       setFinalized((prevFinalised) =>[...prevFinalised,
@@ -112,8 +114,8 @@ present price displayed with respect to the previous quantity*/
           {finalized.map((order)=>(
           <tr>
             <td>{order.token}</td>
-            <td>{order.token}</td>
-            <td>{order.token}</td>
+            <td>{order.name}</td>
+            <td>{order.totalPrice}</td>
           </tr>
         ))}
         </tbody>
