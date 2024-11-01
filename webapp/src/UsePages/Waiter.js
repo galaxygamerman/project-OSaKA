@@ -64,7 +64,7 @@ present price displayed with respect to the previous quantity*/
       /*Used flower brackets within square brackets because I want to group token, name and totalPrice */
       setQty((prevQty) =>[...prevQty,
       { token: token,
-        customerName,
+        name,
         totalPrice: totalOrderPrice 
       }]);
       setToken((prevToken)=>prevToken+1);
