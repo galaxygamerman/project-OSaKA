@@ -1,92 +1,165 @@
 
-.Waiter-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-    background: transparent; 
+/* Header styling */
+.Header h1 {
+  text-align: center; /* Center the text horizontally */
+  margin-bottom: 30px; /* More space below the header */
+  font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
+  font-size: 32px; /* Increased font size for better visibility */
+  font-weight: 600; /* Slightly bolder font for emphasis */
+  color: #333; /* Dark color for text for better contrast */
+  border-bottom: 2px solid #28a745; /* Green bottom border for visual separation */
+  padding: 5px; /* Space between the text and the border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: rgb(254, 255, 169); /* Light background color for a clean look */
+  border-radius: 5px; /* Slightly rounded corners */
+  max-width: 400px; /* Set a maximum width for the header */
+  margin: 0 auto; /* Center the header */
+}
+.icon {
+  width: 30px; 
+  height: 30px; 
+  margin-left: 10px; 
+  vertical-align: middle;
+  transition: transform 0.2s;
 }
 
-  h2 {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
+.Inc {
+  border-radius: 5px;
+  background: rgb(250, 151, 1);
+  color: #fff; 
+  transition: background-color 0.2s ease;
+}
 
-  .Card {
-    width: calc(25% - 20px); 
-    margin: 10px 0;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-  }
+.Inc:hover {
+  background-color: #333; 
+}
+
+.Dec {
+  border-radius: 5px;
+  background: rgb(197, 0, 174);
+  color: #fff; 
+  transition: background-color 0.2s ease; 
+}
+
+.Dec:hover {
+  background-color: #333; 
+}
+
+
+/* Main container styling */
+.Waiter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Finalized order table styling */
+.Finalized {
+  width: 28%;
+  margin-right: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+}
+
+.Finalized h3 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
+  font-weight: 600; /* Bold font for emphasis */
+}
+
+/* Finalized order table */
+.final-table {
   
-  .Card:hover {
-    transform: scale(1.02);
-  }
-  
-  .Card-Body {
-    padding: 16px;
-    background-color: #ffffff;
-  }
-  
-  .Card-Title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #495057;
-  }
-  
-  .m-cost {
-    font-size: 16px;
-    color: #888;
-    margin-bottom: 12px;
-    font-weight: bold;
-  }
-  
- 
-  .Card-Text {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 18px;
-  }
-  
-  button {
-    min-width: 30px;
-    min-height: 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-  }
-  
-  button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
-  
-  button:hover {
-    background-color: #e2e6ea;
-  }
-   span {
-    font-size: 18px;
-    padding: 0 10px;
-    color: #212529;
-  }
-  
-  @media (max-width: 768px) {
-    .Card {
-      width: calc(50% - 20px);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .Card {
-      width: 100%; 
-    }
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.final-table th,
+.final-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.final-table th {
+  font-weight: bold;
+  color: #333;
+  font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
+}
+
+.final-table td {
+  color: #555;
+  font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
+}
+
+/* Cards container styling */
+.Cards-container {
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.Card {
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.Card-Body {
+  display: block;
+  padding: 15px;
+}
+
+.Card:hover{
+  background: rgb(252, 66, 66);
+  border-radius: 8px;
+}
+
+.Card-Title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.Card-Text {
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.m-cost {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Button styling */
+.Card button {
+  margin: 0 5px;
+}
+
+/* Finalize button styling */
+.finalize {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
+}
+
+.finalize:hover {
+  background-color: #a2a500;
+  border-color: #ff0000;
+}
