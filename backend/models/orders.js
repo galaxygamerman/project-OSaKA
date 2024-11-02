@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Define a schema and model for your data
 const MenuItemSchema = new mongoose.Schema({
 	name: { type: String, required: true },
-	price: { type: Number, required: true },
+	quantity: { type: Number, required: true },
 })
 
 const orderSchema = new mongoose.Schema({
