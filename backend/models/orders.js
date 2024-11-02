@@ -8,7 +8,7 @@ const MenuItemSchema = new mongoose.Schema({
 
 const orderSchema = new mongoose.Schema({
 	name: String,
-	items: [String],
+	items: [MenuItemSchema],
 	price: Number,
 	state: String
 });
