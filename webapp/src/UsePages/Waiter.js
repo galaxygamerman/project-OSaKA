@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import waitericon from '../Assets/waiter.png';
 import './Waiter.css';
 
 const Waiter = () => {
+  const navigate=useNavigate();
   const items = [
     { id: 1, name: 'Item 1', MainPrice: 120 },
     { id: 2, name: 'Item 2', MainPrice: 150 },
@@ -90,6 +92,7 @@ present price displayed with respect to the previous quantity*/
               <th>Token Number</th>
               <th>Customer Name</th>
               <th>Total Price</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -98,6 +101,9 @@ present price displayed with respect to the previous quantity*/
                 <td>{order.token}</td>
                 <td>{order.name}</td>
                 <td>₹{order.totalPrice}</td>
+                <td>
+                  <Button onClick={()=>navigate('/order')}>Status</Button>
+                </td>
               </tr>
             ))}
           </tbody>
