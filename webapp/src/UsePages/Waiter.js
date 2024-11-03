@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Card } from 'react-bootstrap';
-// import axios from 'axios';
+import { Button, Card, Modal, Form } from 'react-bootstrap';
+import axios from 'axios';
 import waitericon from '../Assets/waiter.png';
 import './Waiter.css';
 
@@ -22,15 +22,18 @@ const Waiter = () => {
 
   const [Qty, setQty] = useState(Array(items.length).fill(0));
   const [itemsSelected, setItemsSelected] = useState([]);
-  const [price, setPrice] = useState(Array(items.length).fill(0));
-  const [finalized, setFinalized] = useState([]);
-  const [token, setToken] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [customerName, setCustomerName] = useState('');
 
-/*Initially tried:
-    setQty(prevQty => prevQty+1)
-    setPrice(prevPrice =>(Qty*price))
-Did not work as it would alter quantity but the respective price would be diplayed after the queantity event and 
-present price displayed with respect to the previous quantity*/
+// Used to debug the crap out of this page
+  useEffect(() => {
+    console.log(itemsSelected);
+    console.log('qty: ' + Qty);
+
+    return () => {
+      // console.log('decompiler called')
+    }
+  }, [itemsSelected, Qty]);
 
   function decrement(index) {
     if (Qty[index] <= 0) return;
@@ -71,24 +74,43 @@ present price displayed with respect to the previous quantity*/
   }
 
   function handleFinalize() {
-    const name = prompt("Enter Customer Name:");
-    if (!name) return;
-
-    const totalPrice = itemsSelected.reduce((accummulator, curr) => accummulator + curr.quantity * curr.price, 0);
+    const totalPrice = [...itemsSelected].reduce((accummulator, curr) => accummulator + (curr.quantity * curr.price), 0);
     /*The above works, reduce is built in and used to iterate through every element in an array, 
       acc: accummulate, cur: current, 0 initialises acc to 0.*/
-     if (totalPrice > 0) {
-      /*Used flower brackets within square brackets because I want to group token, name and totalPrice */
+    if (totalPrice <= 0) return alert("Please select items before finalizing order.");
+    setShowModal(true);
+  }
 
-      setFinalized((prevOrders) => [
-        ...prevOrders,
-        { token: token, name, totalPrice: totalPrice }
-      ]);
-      setToken((prevToken) => prevToken + 1);
+  async function submitOrder() {
+    if (!customerName.trim()) return alert("Please enter a valid name.");
 
-      // Reset Qty and price arrays to initial state
-      setQty(Array(items.length).fill(0));
-      setPrice(Array(items.length).fill(0));
+    try {
+      // Create the order object
+      const orderData = {
+        name: customerName,
+        items: itemsSelected.map(item => ({
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price
+        })),
+        totalPrice: itemsSelected.reduce((acc, curr) => acc + (curr.quantity * curr.price), 0),
+        status: "Pending"
+      };
+      console.log(orderData);
+      // Send POST request to the backend API
+      const response = await axios.post(`http://${process.env.REACT_APP_BACKEND_URI}/item`, { ...orderData });
+
+      if (response.status === 200) {
+        // If order is successfully saved, reset quantities and selected items
+        setQty(Array(items.length).fill(0));
+        setItemsSelected([]);
+        setCustomerName('');
+        setShowModal(false);
+        alert("Order successfully placed!");
+      }
+    } catch (error) {
+      console.error("Error saving order:", error);
+      alert("Failed to place order. Please try again.");
     }
   }
 
@@ -108,7 +130,7 @@ present price displayed with respect to the previous quantity*/
             </tr>
           </thead>
           <tbody>
-            {finalized.map((order) => (
+              {/* finalized.map((order) => (
               <tr key={order.token}>
                 <td>{order.token}</td>
                 <td>{order.name}</td>
@@ -117,7 +139,7 @@ present price displayed with respect to the previous quantity*/
                   <Button onClick={()=>navigate('/order')}>Status</Button>
                 </td>
               </tr>
-            ))}
+            )) */}
           </tbody>
         </table>
       </div>
@@ -142,10 +164,49 @@ present price displayed with respect to the previous quantity*/
         ))}
       </div>
 
-      <Button className="finalize" onClick={handleFinalize}>
+        <Button className="finalize" onClick={handleFinalize}>
         Finalize
       </Button>
     </div>
+      {showModal &&
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Customer Details</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group className="mb-3">
+                <Form.Label>Customer Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter customer name"
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  autoFocus
+                />
+              </Form.Group>
+            </Form>
+            <div>
+              <h5>Order Summary:</h5>
+              <ul>
+                {itemsSelected.map((item, index) => (
+                  <li key={index}>
+                    {item.name} x {item.quantity} = ₹{item.quantity * item.price}
+                  </li>
+                ))}
+              </ul>
+              <p><strong>Total: ₹{itemsSelected.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)}</strong></p>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Cancel
+            </Button>
+            <Button variant="primary" onClick={submitOrder}>
+              Place Order
+            </Button>
+          </Modal.Footer>
+        </Modal>}
     </div>
   );
 };
