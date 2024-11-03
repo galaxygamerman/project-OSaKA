@@ -24,16 +24,8 @@ const Waiter = () => {
   const [itemsSelected, setItemsSelected] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [customerName, setCustomerName] = useState('');
-
-// Used to debug the crap out of this page
-  useEffect(() => {
-    console.log(itemsSelected);
-    console.log('qty: ' + Qty);
-
-    return () => {
-      // console.log('decompiler called')
-    }
-  }, [itemsSelected, Qty]);
+  const [statusQueue, setStatusQueue] = useState([]);
+  const [reloadFlag, setReloadFlag] = useState(false);
 
   function decrement(index) {
     if (Qty[index] <= 0) return;
@@ -76,7 +68,7 @@ const Waiter = () => {
   function handleFinalize() {
     const totalPrice = [...itemsSelected].reduce((accummulator, curr) => accummulator + (curr.quantity * curr.price), 0);
     /*The above works, reduce is built in and used to iterate through every element in an array, 
-      acc: accummulate, cur: current, 0 initialises acc to 0.*/
+    acc: accummulate, cur: current, 0 initialises acc to 0.*/
     if (totalPrice <= 0) return alert("Please select items before finalizing order.");
     setShowModal(true);
   }
@@ -114,6 +106,28 @@ const Waiter = () => {
     }
   }
 
+  async function getJobs() {
+    try {
+      const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_URI}/items`);
+      let tempQ = [...response.data].filter(data => data.status !== 'Delivered')
+      setStatusQueue(tempQ);
+      console.log(response.data);
+      return tempQ;
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    }
+  }
+
+  // Used to debug the crap out of this page
+  useEffect(() => {
+    console.log(itemsSelected);
+    console.log('qty: ' + Qty);
+    getJobs();
+    return () => {
+      // console.log('decompiler called')
+    }
+  }, [itemsSelected, Qty, reloadFlag]);
+
   return (
     <div className='Header'>
       <h1>Waiter Page<img src={waitericon} alt="Waiter icon" className="icon" /></h1>
@@ -122,24 +136,22 @@ const Waiter = () => {
         <h3>Booked Orders</h3>
         <table className="final-table">
           <thead>
-            <tr>
-              <th>Token Number</th>
+              <tr>
               <th>Customer Name</th>
               <th>Total Price</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-              {/* finalized.map((order) => (
-              <tr key={order.token}>
-                <td>{order.token}</td>
+              {statusQueue.map((order, index) => (
+                <tr key={order._id}>
                 <td>{order.name}</td>
                 <td>₹{order.totalPrice}</td>
                 <td>
-                  <Button onClick={()=>navigate('/order')}>Status</Button>
+                    <Button onClick={() => navigate('/order')}>{order.status}</Button>
                 </td>
               </tr>
-            )) */}
+              ))}
           </tbody>
         </table>
       </div>
