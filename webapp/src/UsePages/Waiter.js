@@ -92,7 +92,7 @@ const Waiter = () => {
       // Send POST request to the backend API
       const response = await axios.post(`http://${process.env.REACT_APP_BACKEND_URI}/item`, { ...orderData });
 
-      if (response.status === 200) {
+      if (/^20\d$/.test(response.status.toString())) {  // Checking of the response code is in the 200 series
         // If order is successfully saved, reset quantities and selected items
         setQty(Array(items.length).fill(0));
         setItemsSelected([]);
