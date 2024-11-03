@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const Order = require('./models/orders.js')
 const dotenv = require('dotenv')
 dotenv.config();
 const app = express();
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB
@@ -20,9 +22,11 @@ mongoose.connect(process.env.MONGO_CONN_URI)
 app.post('/item', async (req, res) => {
 	try {
 		const newOrder = new Order(req.body);
+		console.log(newOrder);
 		const savedItem = await newOrder.save();
 		res.status(201).json(savedItem);
 	} catch (error) {
+		console.error("Error saving order", error);
 		res.status(400).json({ message: error.message });
 	}
 });

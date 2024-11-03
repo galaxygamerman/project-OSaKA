@@ -4,13 +4,14 @@ const mongoose = require('mongoose');
 const MenuItemSchema = new mongoose.Schema({
 	name: { type: String, required: true },
 	quantity: { type: Number, required: true },
+	price: { type: Number, required: true },
 })
 
 const orderSchema = new mongoose.Schema({
 	name: String,
 	items: [MenuItemSchema],
-	price: Number,
-	state: String
+	totalPrice: Number,
+	status: String
 });
 const Order = mongoose.model('Order', orderSchema);
 
