@@ -19,7 +19,7 @@ const Chef = () => {
 
   async function changeStatusToCooked(index) {
     const orderID = queue[index]._id;
-    const neworderData = {
+    const newOrderData = {
       name: queue[index].name,
       items: queue[index].items.map(item => ({
         name: item.name,
@@ -30,7 +30,7 @@ const Chef = () => {
       status: "Cooked"
     };
     try {
-      const response = await axios.put(`http://${process.env.REACT_APP_BACKEND_URI}/item/${orderID}`, neworderData);
+      const response = await axios.put(`http://${process.env.REACT_APP_BACKEND_URI}/item/${orderID}`, newOrderData);
       console.log(response);
       setReloadFlag(cur => !cur);
     } catch (error) {
