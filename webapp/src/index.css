@@ -1,13 +1,16 @@
+/* index.css */
+
+/* Importing Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-*{
+/* Reset and Base Styles */
+* {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;  
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,12 +18,101 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background:url(./Assets/osk.jpg) no-repeat;
+  /*background-image: url('https://th.bing.com/th/id/R.efaf1dcb70d7d1f1c64598be9125e2c9?rik=30gopzAZjM8I0A&riu=http%3a%2f%2fwallpapercave.com%2fwp%2f7LNgUDw.jpg&ehk=Dkzcd5JL2seEDDy5YygFKQa9lR1B%2b7RyYvXaCjZ1r60%3d&risl=&pid=ImgRaw&r=0');*/
   background-size: cover;
-  background-position: center;
+  color: #ffffff; /* White text color */
 }
 
+/* Code block styling */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Theme Colors */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+}
+
+/* General container styling */
+.container {
+  background-color: var(--black); /* Black background for container */
+  color: var(--white); /* White text color */
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px;
+}
+
+/* Header styles */
+header {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--white);
+}
+
+/* Link styles */
+a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+a:hover {
+  color: #cccccc; /* Light gray for hover effect */
+}
+
+/* Button styles */
+button {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #333333; /* Dark gray on hover */
+  color: var(--white);
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+}
+
+/* Responsive text alignment */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--white);
+  text-align: center;
+}
+
+/* Styling for interactive items */
+input[type="text"], select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  border: 1px solid var(--white);
+  border-radius: 5px;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+input[type="text"]:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #cccccc;
+  box-shadow: 0px 0px 5px #cccccc;
 }

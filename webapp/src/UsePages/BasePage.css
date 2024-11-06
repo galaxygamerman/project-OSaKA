@@ -1,85 +1,28 @@
-
-.wrapper {
-    background: rgb(255, 134, 134);
-    height: 350px;
-    width: 700px;
-    border: 5px solid rgba(189, 127, 33, 0.808);
-    color: black;
-    border-radius: 10px;
-    padding: 35px;
-    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.2);
-    font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
+/* Title styling */
+.title {
+  font-size: 3rem; /* Adjust as needed */
+  margin-bottom: 40px; /* Increased space below the title */
+  font-family: 'Ubuntu', sans-serif;
+  color: #ffffff;
 }
 
-.wrapper h1 {
-    font-size: 45px;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
+/* Icon container with more spacing */
+.icon-container {
+  display: flex;
+  gap: 500px; /* Adjust this to avoid excessive spacing */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.wrapper .Button-box {
-    width: 100%;
-    position: relative;
-    height: 50px;
-    margin: 50px 0;
-}
-
-.Button-box .icon {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-}
-
-.chef-button {
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 130%;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: 2px solid rgb(76, 1, 99);
-    outline: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-    font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
-}
-
-.chef-button:hover {
-    background-color: red;
-    color: white;
-}
-
-.waiter-button {
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 130%;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: 2px solid rgb(76, 1, 99);
-    outline: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-    font-family: 'Ubuntu', sans-serif; /* Use Ubuntu font */
-}
-
-.waiter-button:hover {
-    background-color: green;
-    color: white;
-}
-
+/* Icon styling */
 .icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+  width: 227px; /* Set width to 6 cm */
+  height: 227px; /* Set height to 6 cm */
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
+
+.icon:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  filter: drop-shadow(0 0 10px rgba(144, 8, 151, 0.7));}
