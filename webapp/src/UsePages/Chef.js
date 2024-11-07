@@ -7,7 +7,7 @@ const Chef = () => {
 
   async function getJobs() {
     try {
-      const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_URI}/items`);
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/items`);
       let tempQ = [...response.data].filter(data => data.status === 'Pending')
       setQueue(tempQ);
       console.log(response.data);
@@ -30,7 +30,7 @@ const Chef = () => {
       status: "Cooked"
     };
     try {
-      const response = await axios.put(`http://${process.env.REACT_APP_BACKEND_URI}/item/${orderID}`, newOrderData);
+      const response = await axios.put(`${process.env.REACT_APP_BACKEND_URI}/item/${orderID}`, newOrderData);
       console.log(response);
       setReloadFlag(cur => !cur);
     } catch (error) {

@@ -90,7 +90,7 @@ const Waiter = () => {
       };
       console.log(orderData);
       // Send POST request to the backend API
-      const response = await axios.post(`http://${process.env.REACT_APP_BACKEND_URI}/item`, { ...orderData });
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URI}/item`, { ...orderData });
 
       if (/^20\d$/.test(response.status.toString())) {  // Checking of the response code is in the 200 series
         // If order is successfully saved, reset quantities and selected items
@@ -108,7 +108,7 @@ const Waiter = () => {
 
   async function getJobs() {
     try {
-      const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_URI}/items`);
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/items`);
       let tempQ = [...response.data].filter(data => data.status !== 'Delivered')
       setStatusQueue(tempQ);
       console.log(response.data);
