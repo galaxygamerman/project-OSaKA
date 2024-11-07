@@ -115,7 +115,7 @@ const Waiter = () => {
   }, [itemsSelected, Qty, reloadFlag]);
 
   return (
-    <div className="waiter-container">
+    <div className="container">
   <nav className="navbar">
   <a className="navbar-brand" onClick={() => navigate('/')}>
     <img src={titleImage} width="300" height="80"/>
@@ -125,14 +125,11 @@ const Waiter = () => {
       <div className="content">
         {/* Left section - Items Menu */}
         <div className="left-side">
-          <div className="menu">
+          <div className="row menu">
             <h3>Menu</h3>
-            <Button className="finalize" onClick={handleFinalize}>
-              Finalize Order
-            </Button>
             <div className="item-cards">
               {items.map((item, index) => (
-                <Card className="item-card" key={item.id}>
+                <Card className="col-auto item-card" key={item.id}>
                   <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
                     <Card.Text>
@@ -145,6 +142,9 @@ const Waiter = () => {
                 </Card>
               ))}
             </div>
+            <Button className="finalize justify-content-end" onClick={handleFinalize}>
+              Finalize Order
+            </Button>
           </div>
         </div>
 
