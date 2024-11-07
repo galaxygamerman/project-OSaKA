@@ -18,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url('C:\Users\dell\OneDrive\Desktop\project-OSaKA\webapp\src\Assets\bg4.jpg');
+  background-image: url('./Assets/bg4.jpg');
   background-size: cover;
   color: #ffffff; /* White text color */
 }
