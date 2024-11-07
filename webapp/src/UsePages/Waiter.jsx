@@ -177,7 +177,7 @@ const Waiter = () => {
       </div>
 
       {/* Modal for customer details */}
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal className='text-dark' show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Customer Details</Modal.Title>
         </Modal.Header>
