@@ -121,7 +121,7 @@ const Waiter = () => {
     <div className="container">
   <nav className="navbar">
   <a className="navbar-brand" onClick={() => navigate('/')}>
-    <img src={titleImage} width="300" height="80"/>
+          <img src={titleImage} width="300" height="80" alt="Zen & Zest" />
   </a>
 </nav>
 

@@ -13,7 +13,7 @@ const BasePage = () => {
       <div className="title-container">
         <img 
           src={titleImage} 
-          alt="Zen&Zest" 
+          alt="Zen & Zest" 
           className="title-image"
         />
       </div>
