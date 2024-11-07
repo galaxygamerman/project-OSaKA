@@ -148,7 +148,7 @@ const Waiter = () => {
                 <td>{order.name}</td>
                 <td>₹{order.totalPrice}</td>
                 <td>
-                    <Button onClick={() => navigate('/order')}>{order.status}</Button>
+                    <Button onClick={() => navigate(`/order/${order._id}`)}>{order.status}</Button>
                 </td>
               </tr>
               ))}
