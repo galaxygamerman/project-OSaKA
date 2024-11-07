@@ -11,9 +11,9 @@ const BasePage = () => {
   return (
     <div className="base-page-container">
       <div className="title-container">
-        <img 
-          src={titleImage} 
-          alt="Zen & Zest" 
+        <img
+          src={titleImage}
+          alt="Zen & Zest"
           className="title-image"
         />
       </div>

@@ -1,3 +1,4 @@
+/* Base Page Container */
 .base-page-container {
   min-height: 100vh;
   position: relative;
@@ -5,45 +6,52 @@
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
+  padding: 20px;
 }
 
-/* Title container styling */
+/* Title Container */
 .title-container {
   position: absolute;
   top: 20px;
   right: 10px;
   padding: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .title-image {
-  width: 700px;
-  height:200px;
-  object-fit: contain;
+  max-width: 700px;
+  /* Maximum width for larger screens */
+  width: 100%;
+    /* Make it responsive */
+    height: auto;
+    /* Maintain aspect ratio */
 }
 
-/* Icons container positioning at bottom right */
+/* Icons Container */
 .icons-container {
   position: absolute;
-  bottom: 2in; /* 2 inches from the bottom */
+  bottom: 2in;
   left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
+  transform: translateX(-50%);
   display: flex;
   gap: 40px;
   align-items: center;
-   
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Blurred effect */
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Icon styling */
+/* Icon Styling */
 .icon {
   width: 227px;
   height: 227px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  object-fit: contain;
 }
 
 .icon:hover {
@@ -51,47 +59,108 @@
   filter: drop-shadow(0 0 10px rgba(245, 242, 242, 0.7));
 }
 
-/* Responsive design */
+/* Tablet Breakpoint */
 @media (max-width: 1024px) {
+  .title-container {
+    justify-content: center;
+      right: 0;
+    }
+    
+    .title-image {
+    max-width: 500px;
+      /* Adjusted for tablet */
+    }
+
   .icons-container {
-    right: 20px;
-    bottom: 20px;
-    gap: 20px;
+    bottom: 50px;
+    gap: 30px;
   }
 
   .icon {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
   }
 }
 
-@media (max-width: 768px) {
-  .icons-container {
+/* Large Screen Breakpoint (greater than 1024px) */
+@media (min-width: 1025px) {
+  .title-container {
+    justify-content: flex-end;
     position: relative;
-    right: auto;
-    bottom: auto;
-    justify-content: center;
-    margin-top: auto;
-    margin-bottom: 40px;
-    width: 100%;
+    top: 0;
+    padding: 20px 0;
+    align-items: center;
+    /* Align to the right */
+  }
+
+  .title-image {
+    max-width: 800px;
+    /* Increase max-width for larger screens */
+  }
+
+  .icons-container {
+    bottom: 1.5in;
+    /* Maintain original position */
+    gap: 50px;
+    /* Increase gap between icons */
+  }
+
+  .icon {
+    width: 250px;
+    /* Increase icon size */
+    height: 250px;
+    /* Increase icon size */
+  }
+}
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+  .base-page-container {
+    padding: 10px;
   }
 
   .title-container {
     position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
+    top: 0;
+    padding: 20px 0;
+    align-items: center;
   }
 
   .title-image {
-    width: 180px;
-    height: 72px;
+    max-width: 100%;
+    /* Ensure it scales down on mobile */
+    height: auto;
+    /* Maintain aspect ratio */
+  }
+
+  .icons-container {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
   }
 
   .icon {
     width: 150px;
     height: 150px;
+  }
+}
+
+/* Small Mobile Breakpoint */
+@media (max-width: 480px) {
+  .title-image {
+    max-width: 200px;
+    /* Adjust for very small screens */
+  }
+
+  .icons-container {
+    gap: 20px;
+  }
+
+  .icon {
+    width: 120px;
+    height: 120px;
   }
 }
