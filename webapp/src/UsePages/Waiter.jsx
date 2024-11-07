@@ -8,16 +8,20 @@ import titleImage from '../Assets/Zen&Zest.png';
 const Waiter = () => {
   const navigate = useNavigate();
   const items = [
-    { id: 1, name: 'Item 1', price: 120 },
-    { id: 2, name: 'Item 2', price: 150 },
-    { id: 3, name: 'Item 3', price: 200 },
-    { id: 4, name: 'Item 4', price: 180 },
-    { id: 5, name: 'Item 5', price: 130 },
-    { id: 6, name: 'Item 6', price: 140 },
-    { id: 7, name: 'Item 7', price: 160 },
-    { id: 8, name: 'Item 8', price: 170 },
-    { id: 9, name: 'Item 9', price: 190 },
-    { id: 10, name: 'Item 10', price: 110 },
+    { name: 'Ramen', price: 100 },
+    { name: 'Tanghulu', price: 55 },
+    { name: 'Yasai Tempura', price: 60 },
+    { name: 'Corn Dog', price: 90 },
+    { name: 'Falooda', price: 70 },
+    { name: 'Strawberry Boba', price: 80 },
+    { name: 'Kiwi Boba', price: 80 },
+    { name: 'Litchi Boba', price: 80 },
+    { name: 'Passion Fruit Boba', price: 80 },
+    { name: 'Ramen Add-on: Spicy Sauce', price: 5 },
+    { name: 'Ramen Add-on: Paneer', price: 10 },
+    { name: 'Boba Add-on: Blueberry Syrup', price: 0 },
+    { name: 'Boba Add-on: Strawberry Syrup', price: 0 },
+    { name: 'Boba Add-on: Kiwi Syrup', price: 0 },
   ];
 
   const [Qty, setQty] = useState(Array(items.length).fill(0));
@@ -125,7 +129,7 @@ const Waiter = () => {
       <div className="content">
         {/* Left section - Items Menu */}
         <div className="left-side">
-          <div className="row menu">
+          <div className="row menu g-3">
             <h3>Menu</h3>
             <div className="item-cards">
               {items.map((item, index) => (
