@@ -19,9 +19,7 @@ const OrderDetails = () => {
 
   useEffect(() => {
     getJob();
-    return () => {
-    }
-  }, [])
+  });
 
   async function changeStatusToDelivered() {
     const newOrderData = {
@@ -35,8 +33,7 @@ const OrderDetails = () => {
       status: "Delivered"
     };
     try {
-      const response = await axios.put(`${process.env.REACT_APP_BACKEND_URI}/item/${id}`, newOrderData);
-      setOrder(newOrderData);
+      await axios.put(`${process.env.REACT_APP_BACKEND_URI}/item/${id}`, newOrderData);
     } catch (error) {
       console.error("Error updating job:" + error);
     }

@@ -54,9 +54,9 @@ const Chef = () => {
     <>
       {/* Navbar at the top */}
       <nav className="navbar">
-        <a className="navbar-brand" onClick={() => navigate('/')}>
+        <button className="navbar-brand" onClick={() => navigate('/')}>
           <img src={titleImage} width="300" height="80" alt="Zen & Zest" />
-        </a>
+        </button>
       </nav>
       {/* Main content section */}
       <div className="container py-5">
