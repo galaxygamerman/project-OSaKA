@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Container, Card, Table, Button, Spinner } from 'react-bootstrap';
 
 const OrderDetails = () => {
   const { id } = useParams();
-  console.log(id)
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
@@ -33,50 +33,76 @@ const OrderDetails = () => {
     };
     try {
       await axios.put(`${process.env.REACT_APP_BACKEND_URI}/item/${id}`, newOrderData);
+      // Update local state to reflect the change
+      setOrder(newOrderData);
     } catch (error) {
       console.error("Error updating job:" + error);
     }
   }
 
-  if (!order)
-    return (<div>Loading...</div>)
+  if (!order) {
+    return (
+      <Container className="text-center my-5">
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </Container>
+    );
+  }
 
   return (
-    <div className="container order-details-container">
-      <h2>Order Details</h2>
-      <div className="order-info">
-        <p><strong>Customer Name:</strong> {order.name}</p>
-        <p><strong>Order Status:</strong> {order.status}</p>
-        <p><strong>Total Price:</strong> ₹{order.totalPrice}</p>
-      </div>
+    <Container className="my-4">
+      <Card className="shadow-sm">
+        <Card.Header as="h2" className="bg-primary text-white">Order Details</Card.Header>
+        <Card.Body>
+          <div className="row mb-3">
+            <div className="col-md-6">
+              <Card.Text><strong>Customer Name:</strong> {order.name}</Card.Text>
+              <Card.Text>
+                <strong>Order Status:</strong>{' '}
+                <span className={`badge ${order.status === 'Delivered' ? 'bg-success' : 'bg-warning'}`}>
+                  {order.status}
+                </span>
+              </Card.Text>
+              <Card.Text><strong>Total Price:</strong> ₹{order.totalPrice}</Card.Text>
+            </div>
+          </div>
 
-      <div className="order-items">
-        <h3>Items Ordered</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Item Name</th>
-              <th>Quantity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {order.items.map((item, index) => (
-              <tr key={index}>
-                <td>{item.name}</td>
-                <td>{item.quantity}</td>
+          <h3 className="mb-3">Items Ordered</h3>
+          <Table striped bordered hover responsive>
+            <thead className="table-dark">
+              <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {order.items.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.quantity}</td>
+                  <td>₹{item.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
 
-      {order.status !== "Delivered" && (
-        <button onClick={() => changeStatusToDelivered()}>
-          Mark as Delivered
-        </button>
-      )}
-    </div>
-  )
+          {order.status !== "Delivered" && (
+            <div className="text-center mt-3">
+              <Button
+                variant="success"
+                onClick={changeStatusToDelivered}
+                className="px-4"
+              >
+                Mark as Delivered
+              </Button>
+            </div>
+          )}
+        </Card.Body>
+      </Card>
+    </Container>
+  );
 }
 
-export default OrderDetails
+export default OrderDetails;
