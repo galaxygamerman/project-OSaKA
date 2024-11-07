@@ -1,28 +1,97 @@
-/* Title styling */
-.title {
-  font-size: 3rem; /* Adjust as needed */
-  margin-bottom: 40px; /* Increased space below the title */
-  font-family: 'Ubuntu', sans-serif;
-  color: #ffffff;
+.base-page-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
 }
 
-/* Icon container with more spacing */
-.icon-container {
+/* Title container styling */
+.title-container {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  padding: 30px;
+}
+
+.title-image {
+  width: 700px;
+  height:200px;
+  object-fit: contain;
+}
+
+/* Icons container positioning at bottom right */
+.icons-container {
+  position: absolute;
+  bottom: 2in; /* 2 inches from the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
   display: flex;
-  gap: 500px; /* Adjust this to avoid excessive spacing */
-  justify-content: center;
+  gap: 40px;
   align-items: center;
-  margin-top: 20px;
+   
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blurred effect */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 /* Icon styling */
 .icon {
-  width: 227px; /* Set width to 6 cm */
-  height: 227px; /* Set height to 6 cm */
+  width: 227px;
+  height: 227px;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
 .icon:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-  filter: drop-shadow(0 0 10px rgba(144, 8, 151, 0.7));}
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(245, 242, 242, 0.7));
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .icons-container {
+    right: 20px;
+    bottom: 20px;
+    gap: 20px;
+  }
+
+  .icon {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .icons-container {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  .title-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .title-image {
+    width: 180px;
+    height: 72px;
+  }
+
+  .icon {
+    width: 150px;
+    height: 150px;
+  }
+}

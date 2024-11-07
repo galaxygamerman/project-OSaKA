@@ -18,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /*background-image: url('https://th.bing.com/th/id/R.efaf1dcb70d7d1f1c64598be9125e2c9?rik=30gopzAZjM8I0A&riu=http%3a%2f%2fwallpapercave.com%2fwp%2f7LNgUDw.jpg&ehk=Dkzcd5JL2seEDDy5YygFKQa9lR1B%2b7RyYvXaCjZ1r60%3d&risl=&pid=ImgRaw&r=0');*/
+  background-image: url('C:\Users\dell\OneDrive\Desktop\project-OSaKA\webapp\src\Assets\bg4.jpg');
   background-size: cover;
   color: #ffffff; /* White text color */
 }
@@ -30,7 +30,7 @@ code {
 
 /* Theme Colors */
 :root {
-  --black: #000000;
+  --black: #272525;
   --white: #ffffff;
 }
 
@@ -95,11 +95,6 @@ footer {
 }
 
 /* Responsive text alignment */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--white);
-  text-align: center;
-}
-
 /* Styling for interactive items */
 input[type="text"], select, textarea {
   width: 100%;

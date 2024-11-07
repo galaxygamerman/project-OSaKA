@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import titleImage from '../Assets/Zen&Zest.png';
+import './Chef.css'
 
 
 const Chef = () => {  
@@ -52,14 +53,14 @@ const Chef = () => {
   return (
     <>
       {/* Navbar at the top */}
-      <nav className="navbar navbar-light bg-light">
+      <nav className="navbar">
         <a className="navbar-brand" onClick={() => navigate('/')}>
-          <img src={titleImage} width="200" height="80"/>
+          <img src={titleImage} width="300" height="80"/>
         </a>
       </nav>
       {/* Main content section */}
       <div className="container py-5">
-        <h2 className="text-center mb-5 text-primary">Chef's Order Queue</h2>
+        <h2 className="text-center mb-5 text-primary"style={{ color: '#007bff' }}>Chef's Order Queue</h2>
         <div className="row g-3">
           {queue.map((order, index) => (
             <div key={order.name} className="col-sm-12 col-md-6 col-lg-4 col-xxl-3">

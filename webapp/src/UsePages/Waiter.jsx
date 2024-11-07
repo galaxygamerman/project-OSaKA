@@ -116,11 +116,11 @@ const Waiter = () => {
 
   return (
     <div className="waiter-container">
-      <nav className="navbar navbar-light bg-light">
-        <a className="navbar-brand" onClick={() => navigate('/')}>
-          <img src={titleImage} width="200" height="80" />
-        </a>
-      </nav>
+  <nav className="navbar">
+  <a className="navbar-brand" onClick={() => navigate('/')}>
+    <img src={titleImage} width="300" height="80"/>
+  </a>
+</nav>
 
       <div className="content">
         {/* Left section - Items Menu */}
