@@ -29,7 +29,6 @@ const Waiter = () => {
   const [showModal, setShowModal] = useState(false);
   const [customerName, setCustomerName] = useState('');
   const [statusQueue, setStatusQueue] = useState([]);
-  const [reloadFlag, setReloadFlag] = useState(false);
 
   function decrement(index) {
     if (Qty[index] <= 0) return;
@@ -116,7 +115,7 @@ const Waiter = () => {
 
   useEffect(() => {
     getJobs();
-  }, [itemsSelected, Qty, reloadFlag]);
+  }, [itemsSelected, Qty]);
 
   return (
     <div className="container">
