@@ -83,7 +83,9 @@ const Waiter = () => {
         totalPrice: itemsSelected.reduce((acc, curr) => acc + (curr.quantity * curr.price), 0),
         status: "Pending"
       };
-      const response = await axios.post(`http://${process.env.REACT_APP_BACKEND_URI}/item`, { ...orderData });
+      console.log(orderData);
+      // Send POST request to the backend API
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URI}/item`, { ...orderData });
 
       if (/^20\d$/.test(response.status.toString())) {
         setQty(Array(items.length).fill(0));
@@ -100,8 +102,8 @@ const Waiter = () => {
 
   async function getJobs() {
     try {
-      const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_URI}/items`);
-      let tempQ = [...response.data].filter(data => data.status !== 'Delivered');
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/items`);
+      let tempQ = [...response.data].filter(data => data.status !== 'Delivered')
       setStatusQueue(tempQ);
     } catch (error) {
       console.error("Error fetching jobs:", error);
@@ -114,106 +116,106 @@ const Waiter = () => {
 
   return (
     <div className="waiter-container">
-  <nav className="navbar navbar-light bg-light">
-  <a className="navbar-brand" onClick={() => navigate('/')}>
-    <img src={titleImage} width="200" height="80"/>
-  </a>
-</nav>
+      <nav className="navbar navbar-light bg-light">
+        <a className="navbar-brand" onClick={() => navigate('/')}>
+          <img src={titleImage} width="200" height="80" />
+        </a>
+      </nav>
 
-  <div className="content">
-    {/* Left section - Items Menu */}
-    <div className="left-side">
-      <div className="menu">
-        <h3>Menu</h3>
-        <Button className="finalize" onClick={handleFinalize}>
-          Finalize Order
-        </Button>
-        <div className="item-cards">
-          {items.map((item, index) => (
-            <Card className="item-card" key={item.id}>
-              <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
-                <Card.Text>
-                  <div>₹{item.price}</div>
-                  <Button onClick={() => decrement(index)} variant="primary" size="sm">-</Button>
-                  <span>{Qty[index]}</span>
-                  <Button onClick={() => increment(index)} variant="secondary" size="sm">+</Button>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
+      <div className="content">
+        {/* Left section - Items Menu */}
+        <div className="left-side">
+          <div className="menu">
+            <h3>Menu</h3>
+            <Button className="finalize" onClick={handleFinalize}>
+              Finalize Order
+            </Button>
+            <div className="item-cards">
+              {items.map((item, index) => (
+                <Card className="item-card" key={item.id}>
+                  <Card.Body>
+                    <Card.Title>{item.name}</Card.Title>
+                    <Card.Text>
+                      <div>₹{item.price}</div>
+                      <Button onClick={() => decrement(index)} variant="primary" size="sm">-</Button>
+                      <span>{Qty[index]}</span>
+                      <Button onClick={() => increment(index)} variant="secondary" size="sm">+</Button>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right section - Booked Orders */}
+        <div className="right-side">
+          <div className="finalized-orders">
+            <h3>Booked Orders</h3>
+            <table className="final-table">
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Total Price</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {statusQueue.map(order => (
+                  <tr key={order._id}>
+                    <td>{order.name}</td>
+                    <td>₹{order.totalPrice}</td>
+                    <td>
+                      <Button onClick={() => navigate('/order')}>{order.status}</Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
 
-    {/* Right section - Booked Orders */}
-    <div className="right-side">
-      <div className="finalized-orders">
-        <h3>Booked Orders</h3>
-        <table className="final-table">
-          <thead>
-            <tr>
-              <th>Customer Name</th>
-              <th>Total Price</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {statusQueue.map(order => (
-              <tr key={order._id}>
-                <td>{order.name}</td>
-                <td>₹{order.totalPrice}</td>
-                <td>
-                  <Button onClick={() => navigate('/order')}>{order.status}</Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {/* Modal for customer details */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Customer Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Customer Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter customer name"
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+                autoFocus
+              />
+            </Form.Group>
+          </Form>
+          <div>
+            <h5>Order Summary:</h5>
+            <ul>
+              {itemsSelected.map((item, idx) => (
+                <li key={idx}>
+                  {item.name} x {item.quantity} = ₹{item.quantity * item.price}
+                </li>
+              ))}
+            </ul>
+            <p><strong>Total: ₹{itemsSelected.reduce((acc, item) => acc + item.quantity * item.price, 0)}</strong></p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={submitOrder}>
+            Place Order
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
-  </div>
-
-  {/* Modal for customer details */}
-  <Modal show={showModal} onHide={() => setShowModal(false)}>
-    <Modal.Header closeButton>
-      <Modal.Title>Customer Details</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>Customer Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter customer name"
-            value={customerName}
-            onChange={(e) => setCustomerName(e.target.value)}
-            autoFocus
-          />
-        </Form.Group>
-      </Form>
-      <div>
-        <h5>Order Summary:</h5>
-        <ul>
-          {itemsSelected.map((item, idx) => (
-            <li key={idx}>
-              {item.name} x {item.quantity} = ₹{item.quantity * item.price}
-            </li>
-          ))}
-        </ul>
-        <p><strong>Total: ₹{itemsSelected.reduce((acc, item) => acc + item.quantity * item.price, 0)}</strong></p>
-      </div>
-    </Modal.Body>
-    <Modal.Footer>
-      <Button variant="secondary" onClick={() => setShowModal(false)}>
-        Cancel
-      </Button>
-      <Button variant="primary" onClick={submitOrder}>
-        Place Order
-      </Button>
-    </Modal.Footer>
-  </Modal>
-</div>
 
   );
 };
