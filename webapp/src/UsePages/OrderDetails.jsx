@@ -7,19 +7,18 @@ const OrderDetails = () => {
   console.log(id)
   const [order, setOrder] = useState(null);
 
-  async function getJob() {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/item/${id}`)
-      console.log(response);
-      setOrder(response.data)
-    } catch (error) {
-      console.error("Could not get order:", error)
-    }
-  }
-
   useEffect(() => {
+    async function getJob() {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/item/${id}`)
+        console.log(response);
+        setOrder(response.data)
+      } catch (error) {
+        console.error("Could not get order:", error)
+      }
+    }
     getJob();
-  });
+  }, [id]);
 
   async function changeStatusToDelivered() {
     const newOrderData = {
